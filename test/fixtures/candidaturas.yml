@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  candidato: one
+  vaga: one
+  status: MyString
+
+two:
+  candidato: two
+  vaga: two
+  status: MyString
