@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :empresas
-  devise_for :candidatos
+  devise_for :candidatos, path: 'candidatos', controllers: {
+    registrations: 'candidatos/registrations',
+    sessions: 'candidatos/sessions'
+  }
+  
+  devise_for :empresas, path: 'empresas', controllers: {
+    registrations: 'empresas/registrations',
+    sessions: 'empresas/sessions'
+  }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
