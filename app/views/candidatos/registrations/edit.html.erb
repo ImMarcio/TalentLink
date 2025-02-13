@@ -1,7 +1,28 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "candidatos/shared/error_messages", resource: resource %>
+
+
+   <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telefone %><br />
+    <%= f.text_field :telefone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :linkedin %><br />
+    <%= f.text_field :linkedin %>
+  </div>
+
+  <div class="field">
+    <%= f.label :area_atuacao %><br />
+    <%= f.text_field :area_atuacao %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
