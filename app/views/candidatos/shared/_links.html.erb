@@ -1,21 +1,31 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) %><br />
+  <%= link_to "Logar", new_session_path(resource_name), class: "w-64 h-12 bg-[#FAB300] hover:bg-orange-700 shadow-lg text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline text-center" %><br />
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name) %><br />
+  <p class="text-sm text-gray-800 font-medium">
+    Ainda não possui uma conta?
+    <%= link_to "Cadastre-se", new_registration_path(resource_name), class: "text-[#FAB300] font-bold hover:underline" %><br />
+  </p>
+  
 <% end %>
 
+
+
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+ <p class="text-sm text-gray-800 font-medium">
+    Esqueceu sua Senha?
+    <%= link_to "Clique Aqui!", new_password_path(resource_name), class: "text-[#FAB300] font-bold hover:underline" %><br />
+  </p>
+
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %><br />
+  <%= link_to "Não recebeu as instruções de confirmação?", new_confirmation_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %><br />
+  <%= link_to "Não recebeu as instruções de desbloqueio?", new_unlock_path(resource_name) %><br />
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>

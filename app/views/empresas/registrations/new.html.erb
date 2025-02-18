@@ -1,65 +1,76 @@
 
 
 
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
-  html: { class: "bg-gray-500 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full max-w-md " }) do |f| %>
+  html: { class: "bg-white   px-8  w-full max-w-md " }) do |f| %>
   <%= render "empresas/shared/error_messages", resource: resource %>
 
-  <section class="flex flex-col justify-center items-center bg-gray-500 text-white">
-    <h2 class="text-2xl font-bold text-center mb-6 text-white">Cadastro de Empresa</h2>
+    <div class="absolute top-0 right-0 w-1/3 h-2/3 bg-yellow-500" 
+        style="clip-path: polygon(100% 0, 0 0, 100% 100%);">
+    </div>
+
+    <!-- Forma Preta -->
+    <div class="absolute bottom-4 right-0 w-1/2 h-2/3 bg-black" 
+        style="clip-path: polygon(0 100%, 100% 100%, 100% 0);">
+    </div>
+
+  <section class="flex flex-col justify-start items-start bg-white text-black space-y-2">
+    <h2 class="text-5xl font-bold text-center mb-2 text-black whitespace-nowrap">Cadastro de Empresa</h2>
+    <hr class="border-[#FAB300] my-2 w-[500px] border-t-2">
 
 
     <div class="field">
-      <%= f.label :nome_fantasia %><br />
-      <%= f.text_field :nome_fantasia, autofocus: true, class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      <%= f.label :nome_fantasia %>
+      <%= f.text_field :nome_fantasia, autofocus: true, class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="field">
-      <%= f.label :razao_social %><br />
-      <%= f.text_field :razao_social, class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      <%= f.label :razao_social %>
+      <%= f.text_field :razao_social, class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="field">
-      <%= f.label :cnpj %><br />
-      <%= f.text_field :cnpj, class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      <%= f.label :cnpj %>
+      <%= f.text_field :cnpj, class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="field">
-      <%= f.label :telefone %><br />
-      <%= f.text_field :telefone, class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      <%= f.label :telefone %>
+      <%= f.text_field :telefone, class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="field">
-      <%= f.label :setor %><br />
-      <%= f.text_field :setor, class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      <%= f.label :setor %>
+      <%= f.text_field :setor, class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      <%= f.label :email %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+    </div>
+
+    <div class="field ">
+    <div class="flex flex-row space-x-4">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+          <em class="text-sm text-gray-300">(<%= @minimum_password_length %> caracteres no mínimo)</em>
+        <% end %>
+      </div>
+      <%= f.password_field :password, autocomplete: "new-password", class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="field">
-      <%= f.label :password %><br />
-      <% if @minimum_password_length %>
-        <em class="text-sm text-gray-300">(<%= @minimum_password_length %> caracteres no mínimo)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-full px-3 py-2 border rounded shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "Cadastrar", class: "w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 mt-2 rounded focus:outline-none focus:shadow-outline" %>
+      <%= f.submit "Cadastrar", class: "w-64 h-12 bg-[#FAB300] shadow-lg hover:bg-orange-700 text-white font-bold py-2 px-4 mt-2 rounded-lg focus:outline-none focus:shadow-outline" %>
     </div>
 
-    <div class="w-fit bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-6 mt-2 rounded focus:outline-none focus:shadow-outline" >
+
     <%= render "empresas/shared/links"%>
-    </div>
+
   </section>
 <% end %>
   

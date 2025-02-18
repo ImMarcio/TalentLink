@@ -10,7 +10,7 @@ development:
   <<: *default
   database: talent_link
   username: postgres
-  password: "ifpb"
+  password: "postgres"
   host: localhost
   port: 5432
 
