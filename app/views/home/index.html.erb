@@ -29,9 +29,9 @@
                   <h2 class="text-3xl font-bold">Sou Candidato</h2>
                   <p class="text-gray-600 text-lg mb-4 font-medium">Encontre a sua oportunidade ideal aqui conosco!</p>
                 </div>
-                <div>
-                  <button class="bg-yellow-500 text-white py-2 px-4 px-4 rounded-lg  w-56 font-bold">Fazer Log In</button>
-                  <button class="bg-gray-300 text-white py-2 px-4 px-4 rounded-lg w-56 mt-2 font-bold cursor-not-allowed">Cadastrar</button>
+                <div class="flex flex-col space-y-2">
+               <%= link_to "Fazer Log In", new_candidato_session_path, class: "bg-yellow-500 text-white py-2 px-4 px-4 rounded-lg w-56 font-bold" %>
+                  <%= link_to "Cadastrar",new_candidato_registration_path, class: "bg-gray-300 text-white py-2 px-4 px-4 rounded-lg w-56 font-bold" %>
                 </div>
             </div>
             <div class="h-[449px] bg-white p-6 rounded-3xl shadow-lg w-80 text-center flex flex-col  items-center space-y-8 ">
@@ -42,9 +42,10 @@
                       <h2 class="text-3xl font-bold">Sou Empresa</h2>
                       <p class="text-gray-600 text-lg mb-4 font-medium">Conectamos sua empresa aos melhores talentos!</p>
                 </div>
-                 <div>
-                  <button class="bg-yellow-500 text-white py-2 px-4 px-4 rounded-lg w-56 font-bold">Fazer Log In</button>
-                  <button class="bg-gray-300 text-white py-2 px-4 rounded-lg w-56 mt-2 font-bold cursor-not-allowed">Cadastrar</button>
+                 <div class="flex flex-col space-y-2">
+          
+                  <%= link_to "Fazer Log In", new_empresa_session_path, class: "bg-yellow-500 text-white py-2 px-4 px-4 rounded-lg w-56 font-bold" %>
+                  <%= link_to "Cadastrar",new_empresa_registration_path, class: "bg-gray-300 text-white py-2 px-4 px-4 rounded-lg w-56 font-bold" %>
                 </div>
             </div>
         </div>
