@@ -1,0 +1,52 @@
+  <!-- Forma preta -->
+  <div class="absolute top-0 left-0 w-7/8 h-2/3 bg-black z-[-1]" 
+        style="clip-path: polygon(0 34%, 0 0, 77% 0);">
+    </div>
+
+    <!-- Forma Cinza -->
+    <div class="absolute bottom-0 left-0 w-6/8 h-2/3  bg-gray-200 z-[-1]" 
+        style="clip-path: polygon(0 57%, 0% 100%, 58% 100%   );">
+    </div>
+
+       <!-- Forma amrelo -->
+    <div class="absolute bottom-0 right-0 w-6/8 h-2/3 bg-yellow-500 z-[-1]" 
+        style="clip-path: polygon(100% 6%, 34% 100%, 100% 100%);">
+    </div>
+
+
+
+<body class="bg-gray-100 overflow-hidden">
+    <div class="flex flex-col items-center justify-center min-h-screen pb-56 mb-56 ">
+        <div class="bg-yellow-500 text-white font-bold text-8xl px-8 pt-4 rounded-lg-md mb-8 w-84 jomhuria-regular items-center justify-center content-center">
+            TALENTLINK
+        </div>
+        <div class="flex flex-col md:flex-row gap-6">
+            <div class="h-[449px]  bg-white p-6 rounded-3xl shadow-lg w-80 text-center  flex flex-col items-center space-y-8">
+                <div class="mt-4">
+                  <div class="flex justify-center">
+                    <%= image_tag("/images/Businessman.png", class: "w-20 h-20 text-black text-4xl mb-4 items-center") %>
+                  </div>
+                  <h2 class="text-3xl font-bold">Sou Candidato</h2>
+                  <p class="text-gray-600 text-lg mb-4 font-medium">Encontre a sua oportunidade ideal aqui conosco!</p>
+                </div>
+                <div>
+                  <button class="bg-yellow-500 text-white py-2 px-4 px-4 rounded-lg  w-56 font-bold">Fazer Log In</button>
+                  <button class="bg-gray-300 text-white py-2 px-4 px-4 rounded-lg w-56 mt-2 font-bold cursor-not-allowed">Cadastrar</button>
+                </div>
+            </div>
+            <div class="h-[449px] bg-white p-6 rounded-3xl shadow-lg w-80 text-center flex flex-col  items-center space-y-8 ">
+                <div class="mt-4">
+                    <div class="flex justify-center">
+                      <%= image_tag("/images/BusinessBuilding.png", class: "w-20 h-20 text-black text-4xl mb-4") %>
+                    </div>
+                      <h2 class="text-3xl font-bold">Sou Empresa</h2>
+                      <p class="text-gray-600 text-lg mb-4 font-medium">Conectamos sua empresa aos melhores talentos!</p>
+                </div>
+                 <div>
+                  <button class="bg-yellow-500 text-white py-2 px-4 px-4 rounded-lg w-56 font-bold">Fazer Log In</button>
+                  <button class="bg-gray-300 text-white py-2 px-4 rounded-lg w-56 mt-2 font-bold cursor-not-allowed">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
