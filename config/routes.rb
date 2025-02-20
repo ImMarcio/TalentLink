@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  get "empresas/dashboard"
+  get "candidatos/dashboard"
+  # Rota para a página inicial
   get "home/index"
+  root "home#index"
+
+  # Rotas para Devise (autenticação)
   devise_for :candidatos, path: 'candidatos', controllers: {
     registrations: 'candidatos/registrations',
     sessions: 'candidatos/sessions'
@@ -9,17 +15,31 @@ Rails.application.routes.draw do
     registrations: 'empresas/registrations',
     sessions: 'empresas/sessions'
   }
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  # Rotas para Empresas
+  resources :empresas, only: [:show, :edit, :update] do
+    # Rotas para Vagas (aninhadas em Empresas)
+    resources :vagas, only: [:new, :create, :index, :show, :edit, :update, :destroy]
+  end
+
+  # Rotas para Vagas (independentes, para candidatos visualizarem)
+  resources :vagas, only: [:index, :show] do
+    # Rotas para Candidaturas (aninhadas em Vagas)
+    resources :candidaturas, only: [:new, :create]
+  end
+
+  # Rotas para Candidaturas (independentes, para candidatos gerenciarem)
+  resources :candidaturas, only: [:index, :show, :destroy]
+
+  resources :empresas do
+    get 'minhas_candidaturas', on: :member
+  end
+    # Defina rotas para as páginas de dashboard
+    get 'candidato_dashboard', to: 'candidatos#dashboard', as: :candidato_dashboard
+    get 'empresa_dashboard', to: 'empresas#dashboard', as: :empresa_dashboard
+    get 'minhas_candidaturas', to: 'candidaturas#minhas_candidaturas', as: 'minhas_candidaturas'
+      
+  
+  # Rota de saúde da aplicação
   get "up" => "rails/health#show", as: :rails_health_check
-
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
-
-  # Defines the root path route ("/")
-  # root "posts#index"
-  root "home#index" 
 end

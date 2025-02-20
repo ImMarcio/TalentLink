@@ -1,0 +1,26 @@
+ <div class="actions mt-4">
+    <%= link_to 'Voltar', empresa_dashboard_path, class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+
+<div class="mt-16 p-4 ">
+  <div class="flex flex-row justify-between items-center">
+    <h2 class="text-2xl font-bold text-[#FAB300]">Candidaturas às Minhas Vagas</h2>
+  </div>
+  
+  <div class="space-y-4">
+    <% @candidaturas.each do |candidatura| %>
+      <% vaga = candidatura.vaga %> <!-- Pega a vaga associada à candidatura -->
+      <% candidato = candidatura.candidato %> <!-- Pega o candidato associado à candidatura -->
+      
+      <div class="border p-4 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold"><%= vaga.titulo %></h3>
+        <p><strong>Candidato:</strong> <%= candidato.nome %></p>
+        <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
+        <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
+        <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p> <!-- Se houver um campo de status na candidatura -->
+        
+        <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-[#FAB300] hover:underline" %>
+      </div>
+    <% end %>
+  </div>
+</div>

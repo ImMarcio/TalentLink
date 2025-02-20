@@ -1,0 +1,3 @@
+module CandidaturasHelper
+    
+end

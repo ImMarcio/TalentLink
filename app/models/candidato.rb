@@ -9,6 +9,8 @@ class Candidato < ApplicationRecord
   validates :telefone, presence: true
   validates :linkedin, presence: true
   validates :area_atuacao, presence: true
-
+  
+  has_many :candidaturas
+  has_many :vagas, through: :candidaturas
 
 end

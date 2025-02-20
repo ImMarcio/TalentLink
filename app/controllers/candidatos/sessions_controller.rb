@@ -1,5 +1,7 @@
 module Candidatos
     class SessionsController < Devise::SessionsController
-      # Customize o comportamento do controller de sessão para Candidato
+      def after_sign_in_path_for(resource)
+        candidato_dashboard_path # Redireciona para o dashboard do Candidato
+      end
     end
   end

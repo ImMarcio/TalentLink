@@ -1,0 +1,36 @@
+<nav class="flex flex-row justify-between items-center fixed top-0 left-0 right-0 bg-white z-10 border-b-4 border-[#FAB300] ">
+  <div class="flex flex-row items-center content-center space-x-4">
+    <%= image_tag("/images/Businessman.png", class: "w-20 h-20 text-black text-4xl mb-4 items-center") %>
+    <div class="flex flex-col">
+      <h1 class="text-[#FAB300] text-2xl font-bold "> <%= current_candidato.nome %> </h1>
+      <p class="font-semibold">Email: <%= current_candidato.email %></p>
+      <%= link_to 'Minhas Candidaturas', minhas_candidaturas_path, class: "text-[#FAB300] hover:text-orange-700 font-semibold" %>
+    </div>
+    
+
+  </div>
+  <div class="bg-black w-64 h-12 text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32">
+    <%= button_to "Sair", destroy_candidato_session_path, method: :delete %>
+  </div>
+</nav>
+
+<!-- Exibir as vagas -->
+<div class="mt-16 p-4">
+  <h2 class="text-2xl font-bold text-[#FAB300]">Vagas Disponíveis</h2>
+  
+  <div class="space-y-4">
+    <% @vagas.each do |vaga| %>
+      <div class="border p-4 rounded-lg shadow-md">
+        <h3 class="text-xl font-semibold"><%= vaga.titulo %></h3>
+        <p><strong>Salário:</strong> <%= vaga.salario %></p>
+        <p><strong>Localização:</strong> <%= vaga.localizacao %></p>
+        <p><strong>Descrição:</strong> <%= vaga.descricao %></p>
+        <div class="flex flex-row space-x-4">
+         <%= link_to 'Ver detalhes', vaga_path(vaga), class: "text-[#FAB300] hover:underline font-semibold" %>
+         <%= link_to 'Inscreve-se', new_vaga_candidatura_path(vaga), class: "text-red-500 hover:underline font-semibold" %>
+         </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>
