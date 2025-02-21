@@ -22,12 +22,12 @@ class VagasController < ApplicationController
   # Exibir formulário para criar uma nova vaga
   def new
     @vaga = Vaga.new
-    # authorize! :create, @vaga  # Garante que a empresa tem permissão para criar uma nova vaga
+    #  authorize! :create, @vaga  # Garante que a empresa tem permissão para criar uma nova vaga
   end
 
   # Criar uma nova vaga
   def create
-    @vaga = current_empresa.vagas.new(vaga_params)
+    @vaga = @current_empresa.vagas.new(vaga_params)
     # authorize! :create, @vaga  # Garante que a empresa tem permissão para criar uma nova vaga
 
     if @vaga.save

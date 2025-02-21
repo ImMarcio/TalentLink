@@ -1,3 +1,7 @@
+ <div class="actions mt-4 abosute z-1 top-6 left-0">
+  <%= link_to 'Voltar', request.referrer || empresa_dashboard_path, class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+</div>
+
 <div class="flex items-center justify-center min-h-screen pb-56">
   <%= form_with model: [current_empresa, @vaga], local: true, html: { class: "bg-white px-8 pt-6 pb-8 mb-4 w-full max-w-md" } do |form| %>
 

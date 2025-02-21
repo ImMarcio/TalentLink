@@ -10,7 +10,7 @@
 
 <section class="flex flex-wrap space-x-8 justify-center ">
 <div class="space-y-4 ">
-  <h2 class="text-2xl font-bold text-[#FAB300]">Vagas Em Análise</h2>
+  <h2 class="text-2xl font-bold text-[#FAB300]">Candidaturas Em Análise</h2>
     <% @candidaturas.each do |candidatura| %>
       <% if candidatura.status == 'em_analise' %>  
         <% vaga = candidatura.vaga %> 
@@ -41,7 +41,7 @@
   </div>
 
   <div class="space-y-4 ">
-  <h2 class="text-2xl font-bold text-[#FAB300]">Vagas Reprovadas</h2>
+  <h2 class="text-2xl font-bold text-[#FAB300]">Candidaturas Reprovadas</h2>
     <% @candidaturas.each do |candidatura| %>
       <% if candidatura.status == 'reprovada' %>  
         <% vaga = candidatura.vaga %> 
@@ -76,7 +76,7 @@
   </div>
 
   <div class="space-y-4 ">
-    <h2 class="text-2xl font-bold text-[#FAB300]">Vagas Aprovadas</h2>
+    <h2 class="text-2xl font-bold text-[#FAB300]">Candidaturas Aprovadas</h2>
     <% @candidaturas.each do |candidatura| %>
       <% if candidatura.status == 'aprovada' %>  <!-- Filtra candidaturas com status "reprovada" -->
         <% vaga = candidatura.vaga %> 

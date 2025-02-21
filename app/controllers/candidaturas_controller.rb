@@ -1,6 +1,6 @@
 class CandidaturasController < ApplicationController
-  before_action :authenticate_candidato!, except: [:atualizar_status]  # Exceção para a ação de atualizar_status
-  before_action :set_candidatura, only: [:atualizar_status]
+  before_action :authenticate_candidato!, except: [:atualizar_status, :show, :index]  # Permitir empresas verem candidaturas
+  before_action :set_candidatura, only: [:atualizar_status, :show]
 
   def new
     @vaga = Vaga.find(params[:vaga_id])  # Busca a vaga correta
