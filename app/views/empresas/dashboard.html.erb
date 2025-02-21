@@ -34,7 +34,7 @@
           <p><strong>Localização:</strong> <%= vaga.localizacao %></p>
           <p><strong>Descrição:</strong> <%= vaga.descricao %></p>
           <p><strong>Empresa Responsável:</strong> <%= current_empresa.nome_fantasia %></p>
-          
+          <%= link_to 'Ver detalhes', edit_empresa_vaga_path(empresa_id: current_empresa.id, id: vaga.id), class: "text-[#FAB300] hover:underline" %>
           <%= link_to 'Ver detalhes', vaga_path(vaga), class: "text-[#FAB300] hover:underline" %>
         </div>
       <% end %>

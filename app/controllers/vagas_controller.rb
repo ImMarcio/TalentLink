@@ -40,7 +40,7 @@ class VagasController < ApplicationController
   # Exibir formulário para editar uma vaga
   def edit
     # Já está com o @vaga carregado via before_action
-    authorize! :update, @vaga  # Garante que a empresa tem permissão para editar essa vaga
+    # authorize! :update, @vaga  # Garante que a empresa tem permissão para editar essa vaga
   end
 
   # Atualizar uma vaga
