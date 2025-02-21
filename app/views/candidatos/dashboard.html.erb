@@ -10,7 +10,10 @@
 
   </div>
   <div class="bg-black w-64 h-12 text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32">
-    <%= button_to "Sair", destroy_candidato_session_path, method: :delete %>
+
+         <%= form_with url: destroy_candidato_session_path, method: :delete do %>
+              <%= submit_tag 'Sair', class: "bg-black w-64 h-12 text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32" %>
+      <% end %>
   </div>
 </nav>
 
