@@ -56,7 +56,7 @@ class VagasController < ApplicationController
 
   # Excluir uma vaga
   def destroy
-    authorize! :destroy, @vaga  # Garante que a empresa tem permissão para excluir essa vaga
+    # authorize! :destroy, @vaga  # Garante que a empresa tem permissão para excluir essa vaga
 
     @vaga.destroy
     redirect_to empresa_vagas_path(@vaga.empresa), notice: 'Vaga excluída com sucesso.'

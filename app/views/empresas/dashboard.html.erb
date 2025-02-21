@@ -9,10 +9,12 @@
 
     </div>
   </div>
-
+    <div class="flex flex-col space-y-2">
+    <%= link_to 'Editar Perfil', edit_empresa_registration_path, class: "bg-blue-800 px-10  w-64  text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32" %>
      <%= form_with url: destroy_empresa_session_path, method: :delete do %>
               <%= submit_tag 'Sair', class: "bg-black w-64 h-12 text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32" %>
       <% end %>
+     </div> 
   </div>
 </nav>
  
@@ -34,8 +36,16 @@
           <p><strong>Localização:</strong> <%= vaga.localizacao %></p>
           <p><strong>Descrição:</strong> <%= vaga.descricao %></p>
           <p><strong>Empresa Responsável:</strong> <%= current_empresa.nome_fantasia %></p>
-          <%= link_to 'Ver detalhes', edit_empresa_vaga_path(empresa_id: current_empresa.id, id: vaga.id), class: "text-[#FAB300] hover:underline" %>
-          <%= link_to 'Ver detalhes', vaga_path(vaga), class: "text-[#FAB300] hover:underline" %>
+          <%= link_to 'Editar', edit_empresa_vaga_path(empresa_id: current_empresa.id, id: vaga.id), class: "text-blue-500 hover:underline font-medium" %>
+          <%= link_to 'Ver detalhes', vaga_path(vaga), class: "text-[#FAB300] hover:underline font-medium" %>
+          <%
+=begin%>
+ <%= link_to 'Excluir', empresa_vaga_path(current_empresa.id, vaga.id), method: :delete, data: { confirm: 'Você tem certeza que deseja excluir esta vaga?' }, class: "text-red-500 hover:underline font-medium" %> 
+<%
+=end%>
+              <%= form_with url: empresa_vaga_path(current_empresa.id, vaga.id), method: :delete do %>
+              <%= submit_tag 'Excluir', class: "text-red-500 hover:underline font-medium" %>
+            <% end %>
         </div>
       <% end %>
     <% end %>
