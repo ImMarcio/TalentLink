@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_path, alert: exception.message
+  end
+
   def configure_permitted_parameters
     # Permissões para Candidatos
     devise_parameter_sanitizer.permit(:sign_up, keys: [:nome, :telefone, :linkedin, :area_atuacao])
