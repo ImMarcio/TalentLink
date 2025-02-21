@@ -1,5 +1,6 @@
-<div class="flex items-center justify-center min-h-screen ">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "bg-white px-8 pt-6 pb-8 mb-4 w-full max-w-md shadow-md rounded-lg" }) do |f| %>
+<div class="flex flex-col content-center items-center justify-center ">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name),
+   html: { method: :put, class: "bg-white px-8 pt-6 pb-8 mb-4 w-full max-w-md shadow-md rounded-lg" }) do |f| %>
 
     <!-- Forma preta -->
     <div class="absolute top-0 right-0 w-6/8 h-1/3 bg-black z-[-1]" 
@@ -81,11 +82,10 @@
     </section>
   <% end %>
 
- 
   <div class="text-center flex flex-col ml-10">
-   <h3 class="text-2xl font-semibold text-center text-gray-700 mt-6">Cancele minha conta</h3>
-    Infeliz? <%= button_to "Cancele minha conta", registration_path(resource_name),
-     data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "text-red-500 hover:text-red-700 font-semibold" %>
+       <h3 class="text-xl font-bold mt-4">Cancelar minha conta</h3>
+        <div class="text-sm text-gray-600">Insatisfeito? <%= button_to "Cancelar minha conta", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class: "text-red-500 hover:text-red-700" %></div>
+
   </div>
 
   <div class="text-center mt-4">
