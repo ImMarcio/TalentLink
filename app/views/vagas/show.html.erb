@@ -1,0 +1,30 @@
+<div class="flex items-center justify-center min-h-screen pb-56">
+  <!-- Forma preta -->
+  <div class="absolute top-0 right-0 w-6/8 h-1/3 bg-black" 
+        style="clip-path: polygon(100% 0, 0 0, 100% 100%);">
+  </div>
+
+  <!-- Forma amarela -->
+  <div class="absolute bottom-0 left-0 w-6/8 h-2/3 bg-yellow-500" 
+        style="clip-path: polygon(43% 100%, 0 0, 0 100% );">
+  </div>
+
+  <!-- Forma Cinza -->
+  <div class="absolute bottom-0 right-0 w-6/8 h-2/3 bg-gray-200" 
+        style="clip-path: polygon(100% 43%, 56% 100%, 100% 100%);">
+  </div>
+
+  <section class="flex flex-col justify-center items-center bg-white text-black p-8 rounded-lg shadow-lg relative z-10">
+    <h2 class="text-3xl font-bold text-[#FAB300] mb-4 text-center"><%= @vaga.titulo %></h2>
+
+    <div class="text-lg text-black mb-4">
+      <p><strong>Descrição:</strong> <%= @vaga.descricao %></p>
+      <p><strong>Salário:</strong> <%= @vaga.salario %></p>
+      <p><strong>Localização:</strong> <%= @vaga.localizacao %></p>
+    </div>
+
+  <div class="actions mt-4">
+    <%= link_to 'Voltar', empresa_dashboard_path, class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+  </section>
+</div>

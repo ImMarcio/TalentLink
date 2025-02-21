@@ -1,0 +1,46 @@
+
+<nav class="flex flex-row justify-between items-center fixed top-0 left-0 right-0 bg-white z-10 border-b-4 border-[#FAB300] ">
+  <div class="flex flex-row items-center content-center space-x-4">
+    <%= image_tag("/images/BusinessBuilding.png", class: "w-20 h-20 text-black text-4xl mb-4 items-center") %>
+    <div class="flex flex-col">
+      <h1 class="text-[#FAB300] text-2xl font-bold "> <%= current_empresa.nome_fantasia %> </h1>
+      <p class="font-semibold">CNPJ: <%= current_empresa.cnpj %></p>
+      <%= link_to 'Ver minhas candidaturas', minhas_candidaturas_empresa_path(current_empresa), class: "text-[#FAB300] hover:underline" %>
+
+    </div>
+  </div>
+
+     <%= form_with url: destroy_empresa_session_path, method: :delete do %>
+              <%= submit_tag 'Sair', class: "bg-black w-64 h-12 text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32" %>
+      <% end %>
+  </div>
+</nav>
+ 
+<!-- Exibir as vagas -->
+<div class="mt-16 p-4">
+  <div class="flex flex-row justify-between items-center">
+  <h2 class="text-2xl font-bold text-[#FAB300]">Minhas Vagas Disponíveis</h2>
+  <%= button_to "Criar nova vaga", new_empresa_vaga_path(current_empresa.id), method: :get,class: " bg-[#FAB300] rounded-xl text-white px-4 py-4 w-fit text-xl font-bold whitespace-wrap"  %>
+  </div>
+
+    
+
+  <div class="space-y-4">
+    <% @vagas.each do |vaga| %>
+      <% if vaga.empresa_id == current_empresa.id %> <!-- Verifica se a vaga pertence à empresa logada -->
+        <div class="border p-4 rounded-lg shadow-md">
+          <h3 class="text-xl font-semibold"><%= vaga.titulo %></h3>
+          <p><strong>Salário:</strong> <%= vaga.salario %></p>
+          <p><strong>Localização:</strong> <%= vaga.localizacao %></p>
+          <p><strong>Descrição:</strong> <%= vaga.descricao %></p>
+          <p><strong>Empresa Responsável:</strong> <%= current_empresa.nome_fantasia %></p>
+          
+          <%= link_to 'Ver detalhes', vaga_path(vaga), class: "text-[#FAB300] hover:underline" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+</div>

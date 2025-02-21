@@ -10,5 +10,10 @@ class Empresa < ApplicationRecord
   validates :cnpj, presence: true, uniqueness: true
   validates :telefone, presence: true
   validates :setor, presence: true
-         
+  
+  validates :nome_fantasia, :razao_social, :cnpj, :telefone, :setor, presence: true
+  validates :cnpj, uniqueness: true
+
+  has_many :vagas
+  
 end

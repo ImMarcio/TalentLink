@@ -1,0 +1,2 @@
+module Empresa::VagasHelper
+end

@@ -1,0 +1,42 @@
+<!-- Forma amarela -->
+<div class="absolute bottom-0 left-0 w-6/8 h-2/3 bg-yellow-500" 
+     style="clip-path: polygon(43% 100%, 0 0, 0 100%);">
+</div>
+
+<!-- Forma Cinza -->
+<div class="absolute bottom-0 right-0 w-6/8 h-2/3 bg-gray-200" 
+     style="clip-path: polygon(100% 43%, 56% 100%, 100% 100%);">
+</div>
+
+<section class="flex flex-col justify-center items-center bg-white text-black p-6">
+  <h1 class="text-4xl font-semibold text-center text-black mb-6">Minhas Candidaturas</h1>
+  <hr class="border-[#FAB300] my-2 w-[500px] border-t-2 mb-6">
+
+  <!-- Tabela de candidaturas -->
+  <table class="w-full table-auto bg-white shadow-md rounded-lg">
+    <thead>
+      <tr class="bg-[#FAB300] text-white">
+        <th class="py-2 px-4">Candidato</th>
+        <th class="py-2 px-4">Vaga</th>
+        <th class="py-2 px-4">Status</th>
+        <th class="py-2 px-4">Ação</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @candidaturas.each do |candidatura| %>
+        <tr class="text-gray-700 border-b hover:bg-gray-100">
+          <td class="py-2 px-4"><%= candidatura.candidato.nome %></td>
+          <td class="py-2 px-4"><%= candidatura.vaga.titulo %></td>
+          <td class="py-2 px-4"><%= candidatura.status %></td>
+          <td class="py-2 px-4 text-center">
+            <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-[#FAB300] hover:text-orange-700 font-semibold" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="actions mt-4">
+    <%= link_to 'Voltar', candidato_dashboard_path, class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+</section>

@@ -21,6 +21,13 @@
 <section class="flex flex-col justify-center items-center bg-white text-black">
 <h2 class="text-4xl font-semibold text-center  text-black whitespace-nowrap ">Login de Empresa </h2>
   <hr class="border-[#FAB300] my-2 w-[500px] border-t-2">
+  
+     <!-- Mensagens de erro -->
+      <% if flash[:alert] %>
+        <div class="text-red-500 text-sm mb-4">
+          <%= flash[:alert] %>
+        </div>
+      <% end %>
 
   <div class="field">
 
