@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # get "empresas/dashboard"
-  # get "candidatos/dashboard"
+  get "empresas/dashboard"
+  get "candidatos/dashboard"
   # Rota para a página inicial
   get "home/index"
   root "home#index"
