@@ -9,18 +9,28 @@
   
   <div class="space-y-4">
     <% @candidaturas.each do |candidatura| %>
-      <% vaga = candidatura.vaga %> <!-- Pega a vaga associada à candidatura -->
-      <% candidato = candidatura.candidato %> <!-- Pega o candidato associado à candidatura -->
+      <% vaga = candidatura.vaga %> 
+      <% candidato = candidatura.candidato %> 
       
       <div class="border p-4 rounded-lg shadow-md">
-        <h3 class="text-xl font-semibold"><%= vaga.titulo %></h3>
-        <p><strong>Candidato:</strong> <%= candidato.nome %></p>
-        <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
-        <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
-        <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p> <!-- Se houver um campo de status na candidatura -->
-        
-        <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-[#FAB300] hover:underline" %>
-      </div>
+  <h3 class="text-xl font-semibold"><%= vaga.titulo %></h3>
+  <p><strong>Candidato:</strong> <%= candidato.nome %></p>
+  <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
+  <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
+  <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p>
+
+  <!-- Botões para mudar o status -->
+<%= form_with url: atualizar_status_candidatura_path(candidatura, status: 'aprovada'), method: :patch do %>
+  <%= submit_tag 'Aprovar', class: "bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-700" %>
+<% end %>
+
+<%= form_with url: atualizar_status_candidatura_path(candidatura, status: 'reprovada'), method: :patch do %>
+  <%= submit_tag 'Reprovar', class: "bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700" %>
+<% end %>
+
+  <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-[#FAB300] hover:underline mt-2 block" %>
+</div>
     <% end %>
   </div>
 </div>
+''

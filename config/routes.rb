@@ -34,6 +34,13 @@ Rails.application.routes.draw do
   resources :empresas do
     get 'minhas_candidaturas', on: :member
   end
+
+  resources :candidaturas do
+    member do
+      patch 'atualizar_status'
+    end
+  end
+  
     # Defina rotas para as páginas de dashboard
     get 'candidato_dashboard', to: 'candidatos#dashboard', as: :candidato_dashboard
     get 'empresa_dashboard', to: 'empresas#dashboard', as: :empresa_dashboard
