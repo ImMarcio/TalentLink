@@ -50,3 +50,14 @@
     </section>
   <% end %>
 </div>
+
+
+<% if @vaga.errors.any? %>
+  <div class="text-red-500 text-sm text-black mb-4">
+    <ul>
+      <% @vaga.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
