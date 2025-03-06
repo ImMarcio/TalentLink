@@ -5,4 +5,10 @@ class CandidatosController < ApplicationController
     @candidato = current_candidato 
     @vagas = Vaga.all
   end
+
+  def  vagas_disponiveis
+    @candidato = current_candidato 
+    @vagas = Vaga.all
+  end
+ 
 end

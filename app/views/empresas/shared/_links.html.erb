@@ -1,6 +1,10 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Logar", new_session_path(resource_name), class: "w-64 h-12 bg-[#FAB300] hover:bg-orange-700 shadow-lg text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:shadow-outline text-center"  %><br />
+    <p class="text-sm text-gray-800 font-medium">
+      Já possui uma conta?
+     <%= link_to "Fazer Login", new_session_path(resource_name),class: "w-64 h-12 text-[#FAB300] font-boldfocus:outline-none focus:shadow-outline text-center"  %><br />
+  </p>
 <% end %>
+
 
 <% if devise_mapping.registerable? && controller_name != 'registrations' %>
   <p class="text-sm text-gray-800 font-medium">

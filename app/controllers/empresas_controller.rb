@@ -15,4 +15,11 @@ class EmpresasController < ApplicationController
     # Busca as candidaturas das vagas da empresa logada
     @candidaturas = Candidatura.where(vaga_id: @vagas.pluck(:id))
   end
+
+  
+  def vagas_cadastradas
+    @empresa = current_empresa
+    # Pega todas as vagas da empresa logada
+    @vagas = current_empresa.vagas
+  end
 end

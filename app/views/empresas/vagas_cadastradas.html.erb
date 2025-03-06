@@ -1,0 +1,52 @@
+<div class="space-y-4">
+  <h1 class="text-4xl font-medium text-center">Vagas cadastradas</h1>
+
+  <!-- Tabela de Vagas -->
+  <div class="overflow-x-auto">
+    <table class="w-full table-auto bg-white shadow-md rounded-xl">
+      <thead>
+        <tr class="bg-[#FAB300] text-white text-left">
+          <th class="py-3 px-4 min-w-[150px]">Título</th>
+          <th class="py-3 px-4 min-w-[150px]">Salário</th>
+          <th class="py-3 px-4 min-w-[200px]">Descrição</th>
+          <th class="py-3 px-4 min-w-[150px]">Localização</th>
+          <th class="py-3 px-4 min-w-[150px] text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vagas.each do |vaga| %>
+          <% if vaga.empresa_id == current_empresa.id %>
+            <tr class="text-gray-700 border-b hover:bg-gray-100">
+              <td class="py-3 px-4 font-semibold"><%= vaga.titulo %></td>
+              <td class="py-3 px-4 font-semibold"><%= vaga.salario %></td>
+              <td class="py-3 px-4 font-semibold"><%= vaga.descricao %></td>
+              <td class="py-3 px-4 font-semibold"><%= vaga.localizacao %></td>
+              <td class="py-3 px-4 text-center space-x-2">
+                <!-- Botão de Editar -->
+                <%= link_to edit_empresa_vaga_path(empresa_id: current_empresa.id, id: vaga.id), class: "text-blue-500 hover:text-blue-700" do %>
+                  <i class="fa-solid fa-edit"></i>
+                <% end %>
+
+                <!-- Botão de Ver Detalhes -->
+                <%= link_to vaga_path(vaga), class: "text-[#FAB300] hover:text-orange-600" do %>
+                  <i class="fa-solid fa-eye"></i>
+                <% end %>
+
+                <!-- Botão de Excluir -->
+                <%= form_with url: empresa_vaga_path(current_empresa.id, vaga.id), method: :delete, class: "inline" do %>
+                  <button type="submit" class="text-red-500 hover:text-red-700" data-confirm="Tem certeza que deseja excluir?">
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="actions mt-4 text-center">
+    <%= link_to 'Voltar', empresa_dashboard_path, class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+  </div>
+</div>

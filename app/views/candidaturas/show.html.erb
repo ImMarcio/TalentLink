@@ -1,27 +1,21 @@
-<!-- Formas decorativas -->
-<div class="absolute bottom-0 left-0 w-6/8 h-2/3 bg-yellow-500" 
-      style="clip-path: polygon(43% 100%, 0 0, 0 100%);"></div>
+ <div class="actions mt-4 abosute z-1 top-6 left-0">
+  <%= link_to '← Voltar', request.referrer || empresa_dashboard_path, class: "w-36 text-center  text-black font-bold py-2 px-4 underline" %>
+</div>
+<section class="flex flex-col justify-center items-center bg-white text-black p-6 rounded-lg shadow-2xl max-w-[90%] md:max-w-[600px] mx-auto relative">
 
-<div class="absolute bottom-0 right-0 w-6/8 h-2/3 bg-gray-200" 
-      style="clip-path: polygon(100% 43%, 56% 100%, 100% 100%);"></div>
-
-<section class="flex flex-col justify-center items-center bg-white text-black p-6 rounded-lg shadow-lg max-w-[90%] md:max-w-[600px] mx-auto relative">
-  <h1 class="text-4xl font-semibold text-center text-black whitespace-nowrap">Candidatura Detalhes</h1>
+  <h1 class="text-4xl font-semibold text-center text-black whitespace-nowrap mb-2"> Detalhes de Candidatura</h1>
   <hr class="border-[#FAB300] my-2 w-[300px] md:w-[500px] border-t-2">
 
   <div class="field my-2">
-    <p><strong class="text-lg">Candidato:</strong> <span class="text-gray-700"><%= @candidatura.candidato.nome %></span></p>
+    <p><strong class="text-lg">Candidato:</strong> <span class="text-black font-semibold"><%= @candidatura.candidato.nome %></span></p>
   </div>
 
   <div class="field my-2">
-    <p><strong class="text-lg">Vaga:</strong> <span class="text-gray-700"><%= @candidatura.vaga.titulo %></span></p>
+    <p><strong class="text-lg">Vaga:</strong> <span class="text-black font-semibold"><%= @candidatura.vaga.titulo %></span></p>
   </div>
 
   <div class="field my-2">
-    <p><strong class="text-lg">Status:</strong> <span class="text-gray-700"><%= @candidatura.status %></span></p>
+    <p><strong class="text-lg">Status:</strong> <span class="text-black font-semibold"><%= @candidatura.status %></span></p>
   </div>
 
-  <div class="actions mt-4">
-    <%= link_to 'Voltar', candidaturas_path, class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
-  </div>
 </section>
