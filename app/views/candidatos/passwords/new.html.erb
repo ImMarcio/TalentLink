@@ -1,16 +1,39 @@
-<h2>Forgot your password?</h2>
+<div class="flex items-center justify-center min-h-screen pb-56">
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), 
+    html: { class: "bg-white px-8 pt-6 pb-8 mb-4 w-full max-w-md" }) do |f| %>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "candidatos/shared/error_messages", resource: resource %>
+    <!-- Forma preta -->
+    <div class="absolute top-0 right-0 w-6/8 h-1/3 bg-black" 
+          style="clip-path: polygon(100% 0, 0 0, 100% 100%);">
+    </div>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <!-- Forma amarela -->
+    <div class="absolute bottom-0 left-0 w-6/8 h-2/3 bg-yellow-500" 
+          style="clip-path: polygon(43% 100%, 0 0, 0 100%);">
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
+    <!-- Forma Cinza -->
+    <div class="absolute bottom-0 right-0 w-6/8 h-2/3 bg-gray-200" 
+          style="clip-path: polygon(100% 43%, 56% 100%, 100% 100%);">
+    </div>
 
-<%= render "candidatos/shared/links" %>
+    <section class="flex flex-col justify-center items-center bg-white text-black">
+      <h2 class="text-4xl font-semibold text-center text-black whitespace-nowrap">Esqueceu sua Senha?</h2>
+      <hr class="border-[#FAB300] my-2 w-[500px] border-t-2">
+
+      <!-- Mensagens de erro -->
+      <%= render "candidatos/shared/error_messages", resource: resource %>
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Enviar instruções para redefinir a senha", class: "w-fit text-center bg-black hover:bg-orange-700 text-white font-bold py-2 px-4 mt-2 mb-2 rounded focus:outline-none focus:shadow-outline" %>
+      </div>
+
+      <%= render "candidatos/shared/links" %>
+    </section>
+  <% end %>
+</div>

@@ -4,16 +4,16 @@ class Empresa < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         
-  validates :nome_fantasia, presence: true
-  validates :razao_social, presence: true
-  validates :cnpj, presence: true, uniqueness: true
-  validates :telefone, presence: true
-  validates :setor, presence: true
+  # Validações
+  validates :nome_fantasia, presence: true, length: { minimum: 3, maximum: 100 }
+  validates :razao_social, presence: true, length: { minimum: 3, maximum: 100 }
   
-  validates :nome_fantasia, :razao_social, :cnpj, :telefone, :setor, presence: true
-  validates :cnpj, uniqueness: true
+  validates :cnpj, presence: true, uniqueness: true, format: { with: /\A\d{2}\.\d{3}\.\d{3}\/\d{4}-\d{2}\z/, message: "deve estar no formato 00.000.000/0000-00" }
+  
+  validates :telefone, presence: true, format: { with: /\A\(\d{2}\) \d{4,5}-\d{4}\z/, message: "deve estar no formato (XX) XXXXX-XXXX" }
 
-  has_many :vagas
-  
+  validates :setor, presence: true, length: { minimum: 3, maximum: 50 }
+
+  # Associações
+  has_many :vagas, dependent: :destroy
 end

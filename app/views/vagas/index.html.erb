@@ -17,6 +17,8 @@
     </div>
 
     <section class="flex flex-col justify-center items-center bg-white text-black">
+
+
       <h1 class="text-4xl font-semibold text-center text-black whitespace-nowrap">Lista de Vagas</h1>
       <hr class="border-[#FAB300] my-2 w-[500px] border-t-2">
 
@@ -34,7 +36,10 @@
       <% end %>
 
       <% if empresa_signed_in? %>
-        <div class="mt-6">
+        <div class="mt-6 flex flex-row space-x-4">
+             <div class="actions mt-4 ">
+       <%= link_to 'Voltar', request.referrer || empresa_dashboard_path, class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+</div>
           <%= link_to 'Criar Nova Vaga', new_empresa_vaga_path(current_empresa), class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
         </div>
       <% end %>

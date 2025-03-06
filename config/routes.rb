@@ -35,6 +35,14 @@ Rails.application.routes.draw do
     get 'minhas_candidaturas', on: :member
   end
 
+  resources :empresas do
+    get 'vagas_cadastradas', on: :member
+  end
+
+  resources :candidatos do
+    get 'vagas_disponiveis', on: :member
+  end
+
   resources :candidaturas do
     member do
       patch 'atualizar_status'

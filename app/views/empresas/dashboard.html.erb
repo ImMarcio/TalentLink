@@ -5,42 +5,53 @@
     <div class="flex flex-col">
       <h1 class="text-[#FAB300] text-2xl font-bold "> <%= current_empresa.nome_fantasia %> </h1>
       <p class="font-semibold">CNPJ: <%= current_empresa.cnpj %></p>
-      <%= link_to 'Ver minhas candidaturas', minhas_candidaturas_empresa_path(current_empresa), class: "text-[#FAB300] hover:underline" %>
 
     </div>
   </div>
-
+    <div class="flex flex-col space-y-2">
+    <%= link_to 'Editar Perfil', edit_empresa_registration_path, class: "bg-blue-800 px-10  w-64  text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32" %>
      <%= form_with url: destroy_empresa_session_path, method: :delete do %>
               <%= submit_tag 'Sair', class: "bg-black w-64 h-12 text-xl rounded-xl text-white text-center items-center content-center justify-center font-medium mr-32" %>
       <% end %>
+     </div> 
   </div>
 </nav>
- 
-<!-- Exibir as vagas -->
-<div class="mt-16 p-4">
-  <div class="flex flex-row justify-between items-center">
-  <h2 class="text-2xl font-bold text-[#FAB300]">Minhas Vagas Disponíveis</h2>
-  <%= button_to "Criar nova vaga", new_empresa_vaga_path(current_empresa.id), method: :get,class: " bg-[#FAB300] rounded-xl text-white px-4 py-4 w-fit text-xl font-bold whitespace-wrap"  %>
+
+
+
+
+
+<div class="flex flex-row space-x-8 justify-center items-center mt-64 ">
+
+  <div class="bg-[#D9D9D9] h-96 w-80 rounded-xl text-black flex flex-col justify-center text-center items-center "> 
+    <%= image_tag("/images/cadastrar.png", class: "w-36 h-36 text-black text-4xl mb-4 items-center") %>
+
+
+
+    <h1 class="font-bold text-4xl  trucante hover:text-[#FAB300]">
+    <%= button_to "Cadastrar Nova Vaga", new_empresa_vaga_path(current_empresa.id), method: :get,class: "font-bold text-4xl  trucante "  %>
+  
+    </h1>
   </div>
 
-    
+  <div class="bg-[#D9D9D9] h-96 w-80 rounded-xl text-black flex flex-col justify-center text-center items-center ">
+    <%= image_tag("/images/listagem.png", class: "w-36 h-36 text-black text-4xl mb-4 items-center") %>
 
-  <div class="space-y-4">
-    <% @vagas.each do |vaga| %>
-      <% if vaga.empresa_id == current_empresa.id %> <!-- Verifica se a vaga pertence à empresa logada -->
-        <div class="border p-4 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold"><%= vaga.titulo %></h3>
-          <p><strong>Salário:</strong> <%= vaga.salario %></p>
-          <p><strong>Localização:</strong> <%= vaga.localizacao %></p>
-          <p><strong>Descrição:</strong> <%= vaga.descricao %></p>
-          <p><strong>Empresa Responsável:</strong> <%= current_empresa.nome_fantasia %></p>
-          
-          <%= link_to 'Ver detalhes', vaga_path(vaga), class: "text-[#FAB300] hover:underline" %>
-        </div>
-      <% end %>
-    <% end %>
+    <h1 class="font-bold text-4xl  trucante  hover:text-[#FAB300]">
+   
+    <%= button_to " LISTAR VAGAS CADASTRADAS", vagas_cadastradas_empresa_path(current_empresa.id), method: :get,class: "font-bold text-4xl  trucante "  %>
+
+    </h1>
+
   </div>
 
+  <div class="bg-[#D9D9D9] h-96 w-80 rounded-xl text-black flex flex-col justify-center text-center items-center ">
+   <%= image_tag("/images/observar.png", class: "w-36 h-36 text-black text-4xl mb-4 items-center") %>
 
+    <h1 class="font-bold text-4xl  z trucante hover:text-[#FAB300]">
+     <%= link_to 'OBSERVAR CANDIDATURAS', minhas_candidaturas_empresa_path(current_empresa) %>
+     
+    </h1>
+  </div>
 
 </div>
