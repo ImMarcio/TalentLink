@@ -63,12 +63,12 @@
     </div>
 
     <div class="field">
-      <%= f.label :razao_social %>
+      <%= f.label :razao_social,"Razão Social" %>
       <%= f.text_field :razao_social, class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
     <div class="field">
-      <%= f.label :cnpj %>
+      <%= f.label :cnpj,"CNPJ" %>
       <%= f.text_field :cnpj, class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
@@ -89,7 +89,7 @@
 
     <div class="field ">
     <div class="flex flex-row space-x-4">
-        <%= f.label :password %>
+        <%= f.label :password, "Senha" %>
         <% if @minimum_password_length %>
           <em class="text-sm text-gray-300">(<%= @minimum_password_length %> caracteres no mínimo)</em>
         <% end %>
@@ -98,7 +98,7 @@
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %>
+      <%= f.label :password_confirmation, "Confirme sua senha" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
     </div>
 
