@@ -1,5 +1,6 @@
 class CandidaturasController < ApplicationController
-  before_action :authenticate_candidato!, except: [:atualizar_status, :show, :index]  # Permitir empresas verem candidaturas
+  before_action :authenticate_candidato!, only: [:create, :show]  # Para candidatos
+  before_action :authenticate_empresa!, only: [:atualizar_status]  # Para empresas
   before_action :set_candidatura, only: [:atualizar_status, :show]
 
   def new
@@ -33,11 +34,8 @@ class CandidaturasController < ApplicationController
   end
 
   def atualizar_status
-    # Verifica se o usuário atual é uma empresa
-    unless current_empresa
-      flash[:alert] = "Somente empresas podem atualizar o status da candidatura."
-      redirect_to empresa_dashboard_path and return
-    end
+    # Verifica se a empresa tem permissão para atualizar o status da candidatura
+    authorize! :atualizar_status, @candidatura
 
     novo_status = params[:status]
     logger.debug "Status recebido: #{novo_status}"
@@ -61,4 +59,8 @@ class CandidaturasController < ApplicationController
   def candidatura_params
     params.require(:candidatura).permit(:vaga_id, :status)
   end
+
 end
+
+
+

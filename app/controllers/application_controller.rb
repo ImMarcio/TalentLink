@@ -1,7 +1,22 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user
+  helper_method :current_user
 
   protected
+
+  
+  def current_ability
+    @current_ability ||= Ability.new(current_member)
+  end
+
+  private
+
+  # Método que retorna o usuário logado
+  def current_member
+    # Pode retornar o candidato ou empresa baseado no tipo de usuário autenticado
+    current_candidato || current_empresa
+  end
+
 
   def authenticate_user
     # Verifica qual modelo de usuário está logado e chama a autenticação para ele
