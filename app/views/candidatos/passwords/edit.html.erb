@@ -27,20 +27,20 @@
       <%= f.hidden_field :reset_password_token %>
 
       <div class="field">
-        <%= f.label :password, "New password" %><br />
+        <%= f.label :password, "Nova senha" %><br />
         <% if @minimum_password_length %>
-          <em>(<%= @minimum_password_length %> characters minimum)</em><br />
+          <em>(<%= @minimum_password_length %> caracteres mínimos)</em><br />
         <% end %>
         <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
+        <%= f.label :password_confirmation, "Confirme sua nova senha" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Change my password", class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 mt-2 mb-2 rounded focus:outline-none focus:shadow-outline" %>
+        <%= f.submit "Mudar senha", class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 mt-2 mb-2 rounded focus:outline-none focus:shadow-outline" %>
       </div>
 
       <%= render "candidatos/shared/links" %>

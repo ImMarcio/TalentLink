@@ -18,14 +18,14 @@
     </div>
 
     <section class="flex flex-col justify-center items-center bg-white text-black">
-      <h2 class="text-4xl font-semibold text-center text-black whitespace-nowrap">Change your password</h2>
+      <h2 class="text-4xl font-semibold text-center text-black whitespace-nowrap">Mude sua senha</h2>
       <hr class="border-[#FAB300] my-2 w-[500px] border-t-2">
 
       <!-- Mensagens de erro -->
       <%= render "empresas/shared/error_messages", resource: resource %>
 
       <div class="field">
-        <%= f.label :password, "New password" %><br />
+        <%= f.label :password, "Nova senha" %><br />
         <% if @minimum_password_length %>
           <em class="text-sm text-gray-500">(<%= @minimum_password_length %> caracteres no mínimo)</em><br />
         <% end %>
@@ -34,13 +34,13 @@
       </div>
 
       <div class="field">
-        <%= f.label :password_confirmation, "Confirm new password" %><br />
+        <%= f.label :password_confirmation, "Confirme sua nova senha" %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", 
                              class: "w-92 px-3 py-2 border rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300" %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Change my password", class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 mt-2 mb-2 rounded focus:outline-none focus:shadow-outline" %>
+        <%= f.submit "Mudar senha", class: "w-36 text-center bg-[#FAB300] hover:bg-orange-700 text-white font-bold py-2 px-4 mt-2 mb-2 rounded focus:outline-none focus:shadow-outline" %>
       </div>
 
       <%= render "empresas/shared/links" %>
