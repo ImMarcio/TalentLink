@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Para mais informações, veja o [arquivo de testes de autorização](ability_test.md).
 
-Things you may want to cover:
+Para mais informações, veja o [arquivo de validators](validators.md).
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
