@@ -8,7 +8,8 @@ class CandidatosController < ApplicationController
 
   def  vagas_disponiveis
     @candidato = current_candidato 
-    @vagas = Vaga.all
+     # Exclui as vagas em que o candidato já se inscreveu
+  @vagas = Vaga.where.not(id: @candidato.candidaturas.pluck(:vaga_id))
   end
  
 end
