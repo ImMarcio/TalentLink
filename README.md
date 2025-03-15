@@ -61,7 +61,7 @@ Foi desenvolvido em **Ruby on Rails** e utiliza **PostgreSQL** como banco de dad
 - **Banco de Dados**: PostgreSQL
 - **Frontend**: HTML
 - **Autenticação**: Devise (para autenticação de usuários)
-- **Autenticação**: CanCanCan (para autorização de usuários)
+- **Autorização**: CanCanCan (para autorização de usuários)
 - **API**: RESTful APIs para comunicação entre frontend e backend
 
 ## Estrutura do Projeto
