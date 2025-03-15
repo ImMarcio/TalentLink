@@ -1,112 +1,22 @@
 <div class="actions">
-  <%= link_to '← Voltar', empresa_dashboard_path, class: "w-36 text-center  text-gray-700 font-medium underline" %>
+  <%= link_to '← Voltar', empresa_dashboard_path, class: "w-36 text-center  text-black font-medium underline" %>
 </div>
 
   <h2 class="text-3xl font-medium text-black text-center ">Candidaturas às Minhas Vagas</h2>
 
   
 
-<%
-=begin%>
- <section class="flex flex-col space-x-8 justify-center ">
-<div class="space-y-4 flex flex-row ">
-  <h2 class="text-2xl font-medium text-black">Vagas em análise</h2>
-    <% @candidaturas.each do |candidatura| %>
-      <% if candidatura.status == 'em_analise' %>  
-        <% vaga = candidatura.vaga %> 
-        <% candidato = candidatura.candidato %> 
-        
-        <div class=" bg-[#D9D9D9] p-4 rounded-xl outline-red-100 flex flex-row justify-center items-start ">
-          <h3 class="text-2xl font-semibold mb-2"><%= vaga.titulo %></h3>
-          <p><strong>Candidato:</strong> <%= candidato.nome %></p>
-          <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
-          <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
-          <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p>
-
-          <!-- Botões para mudar o status -->
-          <div class="flex flex-row space-x-4 mt-4">
-            <div class="flex space-x-4">
-            <%= form_with url: atualizar_status_candidatura_path(candidatura, status: 'aprovada'), method: :patch do %>
-              <button type="submit" class="bg-black text-white hover:bg-white hover:text-black px-8 py-6 rounded-lg flex items-center space-x-2">
-                <i class="fa-solid fa-check"></i>
-                <span>Aprovar</span>
-              </button>
-            <% end %>
-
-              <%= form_with url: atualizar_status_candidatura_path(candidatura, status: 'reprovada'), method: :patch do %>
-                <button type="submit" class="bg-white hover:bg-black hover:text-white text-black px-8 py-6 rounded-lg flex items-center space-x-2">
-                  <i class="fa-solid fa-times"></i>
-                  <span>Reprovar</span>
-                </button>
-              <% end %>
-            </div>
-
-          </div>
-          
-          <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-black hover:underline mt-2 block font-bold underline" %>
-        </div>
-      <% end %>
-    <% end %>
-</div>
-
-  <div class="space-y-4 ">
-  <h2 class="text-2xl font-medium text-black">Candidaturas Reprovadas</h2>
-    <% @candidaturas.each do |candidatura| %>
-      <% if candidatura.status == 'reprovada' %>  
-        <% vaga = candidatura.vaga %> 
-        <% candidato = candidatura.candidato %> 
-        
-        <div class=" bg-[#D9D9D9] p-4 rounded-xl shadow-md">
-          <h1 class="text-3xl font-semibold"><%= vaga.titulo %></h1>
-          <p><strong>Candidato:</strong> <%= candidato.nome %></p>
-          <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
-          <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
-          <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p>
-
-          <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-black hover:underline mt-2 block" %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-  <div class="space-y-4 ">
-    <h2 class="text-2xl font-medium text-black">Candidaturas Aprovadas</h2>
-    <% @candidaturas.each do |candidatura| %>
-      <% if candidatura.status == 'aprovada' %>  <!-- Filtra candidaturas com status "reprovada" -->
-        <% vaga = candidatura.vaga %> 
-        <% candidato = candidatura.candidato %> 
-        
-        <div class="border p-4 rounded-lg shadow-md">
-          <h3 class="text-xl font-semibold"><%= vaga.titulo %></h3>
-          <p><strong>Candidato:</strong> <%= candidato.nome %></p>
-          <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
-          <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
-          <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p>
-
-      
-          
-          <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-black hover:underline mt-2 block" %>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
-
-</section> 
-<%
-=end%>
-
-
-
-<section class="flex flex-col space-y-4">
 <div>
-  <h1 class="text-2xl mb-2">
-  Vagas em análise
-  </h1>
+  <h1 class="text-2xl mb-2">Vagas em análise</h1>
   <hr>
 
-  <div class="mt-4 flex flex-row space-x-4  ">
-   <% @candidaturas.each do |candidatura| %>
-      <% if candidatura.status == 'Em analise' %>  
+  <% candidaturas_em_analise = @candidaturas.select { |candidatura| candidatura.status == 'Em analise' } %>
+  
+  <% if candidaturas_em_analise.empty? %>
+    <p>Não há candidaturas em análise.</p>
+  <% else %>
+    <div class="mt-4 flex flex-row space-x-4">
+      <% candidaturas_em_analise.each do |candidatura| %>
         <% vaga = candidatura.vaga %> 
         <% candidato = candidatura.candidato %> 
         
@@ -120,12 +30,12 @@
           <!-- Botões para mudar o status -->
           <div class="flex flex-row space-x-4 mt-4">
             <div class="flex space-x-4">
-            <%= form_with url: atualizar_status_candidatura_path(candidatura, status: 'aprovada'), method: :patch do %>
-              <button type="submit" class="bg-black text-white hover:bg-white hover:text-black px-8 py-6 rounded-lg flex items-center space-x-2">
-                <i class="fa-solid fa-check"></i>
-                <span>Aprovar</span>
-              </button>
-            <% end %>
+              <%= form_with url: atualizar_status_candidatura_path(candidatura, status: 'aprovada'), method: :patch do %>
+                <button type="submit" class="bg-black text-white hover:bg-white hover:text-black px-8 py-6 rounded-lg flex items-center space-x-2">
+                  <i class="fa-solid fa-check"></i>
+                  <span>Aprovar</span>
+                </button>
+              <% end %>
 
               <%= form_with url: atualizar_status_candidatura_path(candidatura, status: 'reprovada'), method: :patch do %>
                 <button type="submit" class="bg-white hover:bg-black hover:text-white text-black px-8 py-6 rounded-lg flex items-center space-x-2">
@@ -134,46 +44,54 @@
                 </button>
               <% end %>
             </div>
-
           </div>
-          
+
           <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-black hover:underline mt-2 block font-bold underline" %>
         </div>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
-
 
 <div>
   <h1 class="text-2xl mb-2">Vagas aprovadas  <i class="fa-solid fa-check"></i></h1>
   <hr>
-  <div class="mt-4 flex flex-row space-x-4 ">
-    <% @candidaturas.each do |candidatura| %>
-        <% if candidatura.status == 'aprovada' %>  
-          <% vaga = candidatura.vaga %> 
-          <% candidato = candidatura.candidato %> 
-          
-          <div class=" bg-[#D9D9D9] h-56 p-4 rounded-xl w-[21rem] outline-red-100 flex flex-col justify-center items-start">
-            <h1 class="text-2xl font-semibold mb-2"><%= vaga.titulo %></h1>
-            <p><strong>Candidato:</strong> <%= candidato.nome %></p>
-            <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
-            <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
-            <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p>
+  
+  <% candidaturas_aprovadas = @candidaturas.select { |candidatura| candidatura.status == 'aprovada' } %>
+  
+  <% if candidaturas_aprovadas.empty? %>
+    <p>Não há candidaturas aprovadas.</p>
+  <% else %>
+    <div class="mt-4 flex flex-row space-x-4 ">
+      <% candidaturas_aprovadas.each do |candidatura| %>
+        <% vaga = candidatura.vaga %> 
+        <% candidato = candidatura.candidato %> 
+        
+        <div class=" bg-[#D9D9D9] h-56 p-4 rounded-xl w-[21rem] outline-red-100 flex flex-col justify-center items-start">
+          <h1 class="text-2xl font-semibold mb-2"><%= vaga.titulo %></h1>
+          <p><strong>Candidato:</strong> <%= candidato.nome %></p>
+          <p><strong>Salário Oferecido:</strong> <%= vaga.salario %></p>
+          <p><strong>Localização da Vaga:</strong> <%= vaga.localizacao %></p>
+          <p><strong>Status da Candidatura:</strong> <%= candidatura.status %></p>
 
-            <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-black hover:underline mt-2 block" %>
-          </div>
-        <% end %>
+          <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-black hover:underline mt-2 block" %>
+        </div>
       <% end %>
-  </div>
+    </div>
+  <% end %>
 </div>
 
 <div>
   <h1 class="text-2xl mb-2">Vagas Reprovadas  <i class="fa-solid fa-times"></i></h1>
   <hr>
-  <div>
-     <% @candidaturas.each do |candidatura| %>
-      <% if candidatura.status == 'reprovada' %>  
+  
+  <% candidaturas_reprovadas = @candidaturas.select { |candidatura| candidatura.status == 'reprovada' } %>
+  
+  <% if candidaturas_reprovadas.empty? %>
+    <p>Não há candidaturas reprovadas.</p>
+  <% else %>
+    <div class="mt-4 flex flex-row space-x-4 ">
+      <% candidaturas_reprovadas.each do |candidatura| %>
         <% vaga = candidatura.vaga %> 
         <% candidato = candidatura.candidato %> 
         
@@ -187,10 +105,6 @@
           <%= link_to 'Ver detalhes', candidatura_path(candidatura), class: "text-black hover:underline mt-2 block" %>
         </div>
       <% end %>
-    <% end %>
-    
-  </div>
+    </div>
+  <% end %>
 </div>
-
-</section>
-
