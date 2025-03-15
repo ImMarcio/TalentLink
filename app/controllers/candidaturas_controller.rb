@@ -15,7 +15,7 @@ class CandidaturasController < ApplicationController
     @vaga = Vaga.find(params[:vaga_id])
     @candidatura = @vaga.candidaturas.new(candidatura_params)
     @candidatura.candidato = current_candidato  # Define o candidato automaticamente
-    @candidatura.status = "Em análise"  # Define o status padrão
+    @candidatura.status = "Em analise"  # Define o status padrão
   
     if @candidatura.save
       redirect_to @candidatura, notice: 'Candidatura criada com sucesso.'

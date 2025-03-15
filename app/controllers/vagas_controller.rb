@@ -31,7 +31,7 @@ class VagasController < ApplicationController
     # authorize! :create, @vaga  # Garante que a empresa tem permissão para criar uma nova vaga
 
     if @vaga.save
-      redirect_to empresa_vagas_path(current_empresa), notice: 'Vaga criada com sucesso.'
+      redirect_to vagas_cadastradas_empresa_path(current_empresa), notice: 'Vaga criada com sucesso.'
     else
       render :new
     end
