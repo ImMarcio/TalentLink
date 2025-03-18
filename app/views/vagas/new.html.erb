@@ -37,8 +37,9 @@
   <% end %>
 </div>
 
+
 <% if @vaga.errors.any? %>
-  <div id="error_explanation" class="fixed top-5 right-5 w-fit bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded-lg shadow-sm z-50">
+  <div id="error_explanation" data-controller="error-popup" data-error-popup-target="errorMessage" class="fixed top-5 right-5 w-fit bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded-lg shadow-sm z-50">
     <h2 class="text-lg font-semibold mb-2">
       <%= I18n.t("errors.messages.not_saved",
                  count: @vaga.errors.count,
@@ -51,29 +52,8 @@
         </li>
       <% end %>
     </ul>
-    <button id="close_error" class="absolute top-2 right-2 text-sm text-red-700 hover:text-red-900 focus:outline-none">
+    <button data-action="click->error-popup#closeError" class="absolute top-2 right-2 text-sm text-red-700 hover:text-red-900 focus:outline-none">
       Fechar
     </button>
   </div>
-
-  <script>
-    // Fecha automaticamente após 5 segundos
-    setTimeout(function() {
-      const errorElement = document.getElementById('error_explanation');
-      if (errorElement) {
-        errorElement.style.display = 'none';
-      }
-    }, 5000);
-
-    // Fecha o pop-up quando o botão de "Fechar" é clicado
-    const closeButton = document.getElementById('close_error');
-    if (closeButton) {
-      closeButton.addEventListener('click', function() {
-        const errorElement = document.getElementById('error_explanation');
-        if (errorElement) {
-          errorElement.style.display = 'none';
-        }
-      });
-    }
-  </script>
 <% end %>
